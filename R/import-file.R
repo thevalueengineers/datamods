@@ -189,13 +189,19 @@ import_file_server <- function(id,
           skip = input$skip_rows,
           encoding = input$encoding
         ), silent = TRUE)
+      } else if(is_sav(input$file$datapath)) {
+        imported <- try(haven::read_sav(
+          file = input$file$datapath,
+          skip = input$skip_rows,
+          encoding = input$encoding
+        ), silent = TRUE)
       }else{
          imported <- try(rio::import(
           file = input$file$datapath,
           skip = input$skip_rows,
           dec= input$dec,
           encoding = input$encoding
-        ), silent = TRUE) 
+        ), silent = TRUE)
       }
 
       if (inherits(imported, "try-error") || NROW(imported) < 1) {
@@ -273,5 +279,9 @@ is_excel <- function(path) {
 
 is_sas <- function(path) {
   isTRUE(tools::file_ext(path) %in% c("sas7bdat"))
+}
+
+is_sav <- function(path) {
+  isTRUE(tools::file_ext(path) %in% c("sav"))
 }
 
