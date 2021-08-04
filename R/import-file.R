@@ -18,7 +18,9 @@
 #' @importFrom shinyWidgets pickerInput numericInputIcon textInputIcon dropMenu
 #'
 #' @example examples/from-file.R
-import_file_ui <- function(id, title = TRUE) {
+import_file_ui <- function(id,
+                           title = TRUE,
+                           file_types = c(".csv", ".txt", ".xls", ".xlsx", ".rds", ".fst", ".sas7bdat", ".sav")) {
 
   ns <- NS(id)
 
@@ -41,7 +43,7 @@ import_file_ui <- function(id, title = TRUE) {
           label = i18n("Upload a file:"),
           buttonLabel = i18n("Browse..."),
           placeholder = i18n("No file selected"),
-          accept = c(".csv", ".txt", ".xls", ".xlsx", ".rds", ".fst", ".sas7bdat", ".sav"),
+          accept = file_types,
           width = "100%"
         )
       ),
@@ -93,7 +95,7 @@ import_file_ui <- function(id, title = TRUE) {
         id = ns("import-result"),
         status = "info",
         tags$b(i18n("No file selected:")),
-        i18n("You can import .rds, .txt, .csv, .xls, .xlsx, .sas7bdat, .sav, ..."),
+        i18n(paste0("You can import ", file_types)),
         dismissible = TRUE
       )
     ),
