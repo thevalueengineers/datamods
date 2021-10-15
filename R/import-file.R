@@ -195,7 +195,7 @@ import_file_server <- function(id,
         imported <- try(haven::read_sav(
           file = input$file$datapath,
           skip = input$skip_rows,
-          encoding = input$encoding
+          #encoding = input$encoding
         ), silent = TRUE)
       }else{
          imported <- try(rio::import(
