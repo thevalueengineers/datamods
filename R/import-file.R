@@ -95,7 +95,7 @@ import_file_ui <- function(id,
         id = ns("import-result"),
         status = "info",
         tags$b(i18n("No file selected:")),
-        i18n(paste0("You can import ", paste(file_types, collapse = ", "))),
+        i18n(paste0("You can import ", file_types)),
         dismissible = TRUE
       )
     ),
