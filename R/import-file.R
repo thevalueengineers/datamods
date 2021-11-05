@@ -256,15 +256,13 @@ import_file_server <- function(id,
       return(list(
         status = reactive(temporary_rv$status),
         name = reactive(imported_rv$name),
-        data = reactive(as_out(imported_rv$data, return_class)),
-        filepath = reactive(as.character(input$file$datapath))
+        data = reactive(as_out(imported_rv$data, return_class))
       ))
     } else {
       return(list(
         status = reactive(temporary_rv$status),
         name = reactive(temporary_rv$name),
-        data = reactive(as_out(temporary_rv$data, return_class)),
-        filepath = reactive(as.character(input$file$datapath))
+        data = reactive(as_out(temporary_rv$data, return_class))
       ))
     }
   }
